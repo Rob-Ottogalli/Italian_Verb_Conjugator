@@ -1,0 +1,15 @@
+body {
+    padding: 10;
+    margin: 10;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    line-height: 150%;
+    color: rgb(33, 143, 125);
+    background: #f3f7f5ce;
+  }
+
+ .center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
