@@ -21,7 +21,7 @@ def home():
 def scrape():
 
     ## Call dictionary from verb_scrape
-    # my_dict = get_verb_info()
+    # my_dict = verb_scrape.get_verb_info()
     
     # Set variables (verb, person, mood, tense) equal to dictionary values
 
