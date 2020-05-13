@@ -25,21 +25,68 @@
       </div>
       <select class="custom-select person" id="inputGroupSelect01">
         <option selected>Choose person...</option>
-        <option value="1">io</option>
-        <option value="2">tu</option>
-        <option value="3">lui</option>
-        <option value="4">lei</option>
-        <option value="5">noi</option>
-        <option value="6">voi</option>
-        <option value="7">loro</option>
+        <option>io</option>
+        <option>tu</option>
+        <option>lui</option>
+        <option>lei</option>
+        <option>noi</option>
+        <option>voi</option>
+        <option>loro</option>
       </select>
     </div>
 
     <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect02">Mood</label>
+      </div>
+      <select class="custom-select mood" id="inputGroupSelect02">
+        <option selected>Choose verb mood...</option>
+        <option>Indicative</option>
+        <option>Subjunctive</option>
+        <option>Conditional</option>
+        <option>Imperative</option>
+      </select>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect03">Tense/Aspect</label>
+      </div>
+      <select class="custom-select mood" id="inputGroupSelect03">
+
+      </select>
+    </div>
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Verb</th>
+          <th>Person</th>
+          <th>Mood</th>
+          <th>Tense/Aspect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="output-text"></td>
+          <td class="output-person"></td>
+          <td class="output-mood"></td>
+          <td class="output-tense"></td>
+        </tr>
+      </tbody>
+    </table>
+    <!--
+    <div class="input-group mb-3">
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Verb!</a></p>
+    </div>
+    -->
+    <!--
+    <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <label class="input-group-text" for="inputGroupSelect01">Tense/Aspect (Indicative)</label>
+          <label class="input-group-text" for="inputGroupSelect02">Tense/Aspect (Indicative)</label>
         </div>
-        <select class="custom-select tense" id="inputGroupSelect01">
+        <select class="custom-select tense" id="inputGroupSelect02">
           <option selected>Choose verb tense/aspect...</option>
           <option value="1">Present Indicative</option>
           <option value="2">Imperfect Indicative</option>
@@ -59,12 +106,6 @@
         </select>
     </div>
 
-    <!--
-    <div class="input-group mb-3">
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Verb!</a></p>
-    </div>
-    -->
-    <!--
     <div class="input-group mb-3">
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">Mood</label>
@@ -117,6 +158,7 @@
         <label for="exampleFormControlTextarea1">Conjugated Verb</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
+
     <p class="output"></p>
     <p class="output"></p>
     <p class="output"></p>
