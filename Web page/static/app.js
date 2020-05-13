@@ -45,25 +45,46 @@ const moodDropdown = d3.select("#inputGroupSelect02");
 const moodOutput = d3.select(".output-mood");
 
 function moodToTable(event) {
-  let inputValue = d3.event.target.value;
+  let mood = d3.event.target.value;
+
   moodOutput.text("");
-  moodOutput.text(inputValue);
+  moodOutput.text(mood);
+
+  setTenseMenu(mood);
 }
 
 moodDropdown.on("change", moodToTable);
 
 //-------------------------------------------
-// Function to handle tense/aspect dropdown
+// Function to modify tense/aspect dropdown
 //-------------------------------------------
 const tenseDropdown = d3.select("#inputGroupSelect03");
 const tenseOutput = d3.select(".output-tense");
 
+function setTenseMenu(mood) {
+  // Set empty list to hold dropdown menu options
+  let listOptions = [];
 
+  // The tense/aspect menu options will populate 
+  // from the following lists
+  // depending on mood selected from previous dropdown menu.
+  if (mood === "indicative") {
+    listOptions = ["Choose tense/aspect...", "present", "imperfect", 
+                  "past absolute", "future simple", "future perfect",
+                  "present perfect", "pluperfect", "remote pluperfect"];
+  }
+  else if (mood === "subjunctive") {
+    listOptions = ["Choose tense/aspect...", "present", "imperfect", 
+                  "present perfect", "pluperfect"];
+  }
+  else if (mood === "conditional") {
+    listOptions = ["Choose tense/aspect...", "present", "perfect"];
+  }
+  else if (mood === "imperative") {
+    listOptions = ["Choose tense/aspect...", "--"];
+  }
 
-function tenseToTable(event) {
-  let listOptions = ["Choose tense/aspect...", "present", "imperfect"];
-
-  
+  // populate menu options into the dropdown menu.
   tenseDropdown
   .selectAll("select")
   .data(listOptions)
@@ -74,3 +95,16 @@ function tenseToTable(event) {
   });
 }
 
+//-------------------------------------------
+// Function to handle mood dropdown
+//-------------------------------------------
+
+
+function tenseToTable(event) {
+  let tense = d3.event.target.value;
+
+  tenseOutput.text("");
+  tenseOutput.text(tense);
+}
+
+tenseOutput.on("change", tenseToTable);
