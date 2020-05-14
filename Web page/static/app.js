@@ -8,13 +8,13 @@ const outputField = d3.select(".output-text");
 // Function to handle input change
 function verbToTable(event) {
     // grab the value of the input field
-    let inputValue = d3.event.target.value;
+    let verb = d3.event.target.value;
   
     // clear the existing output
     outputField.text("");
   
     // Set the output text to the input string
-    outputField.text(inputValue);
+    outputField.text(verb);
 
 }
 
@@ -29,9 +29,15 @@ const personDropdown = d3.select("#inputGroupSelect01");
 const personOutput = d3.select(".output-person");
 
 function personToTable(event) {
-  let inputValue = d3.event.target.value;
-  personOutput.text("");
-  personOutput.text(inputValue);
+  let person = d3.event.target.value;
+
+  if (person === "Choose person...") {
+    personOutput.text("");
+  }
+  else {
+    personOutput.text("");
+    personOutput.text(person);
+  }
 }
 
 personDropdown.on("change", personToTable);
@@ -47,8 +53,13 @@ const moodOutput = d3.select(".output-mood");
 function moodToTable(event) {
   let mood = d3.event.target.value;
 
-  moodOutput.text("");
-  moodOutput.text(mood);
+  if (mood === "Choose verb mood...") {
+    moodOutput.text("");
+  }
+  else {
+    moodOutput.text("");
+    moodOutput.text(mood);
+  }
 
   setTenseMenu(mood);
 }
@@ -85,26 +96,37 @@ function setTenseMenu(mood) {
   }
 
   // populate menu options into the dropdown menu.
-  tenseDropdown
-  .selectAll("select")
-  .data(listOptions)
-  .enter()
-  .append("option")
-  .html(function (d) {
-    return d;
-  });
+  // Set variable to hold selection of dropdown tag and data
+  var selection = tenseDropdown.selectAll("select").data(listOptions);
+
+  // Update new data and merge old
+  selection.enter()
+    .append("option")
+    .merge(selection)
+    .html(function (d) {
+      return d;
+    });
+  
+  // Delete unnecessary elements
+  selection.exit().remove();
 }
 
 //-------------------------------------------
-// Function to handle mood dropdown
+// Function to print tense dropdown to table
 //-------------------------------------------
 
 
 function tenseToTable(event) {
   let tense = d3.event.target.value;
 
-  tenseOutput.text("");
-  tenseOutput.text(tense);
+  if (tense === "Choose tense/aspect...") {
+    tenseOutput.text("");
+  }
+  else {
+    tenseOutput.text("");
+    tenseOutput.text(tense);
+  }
+
 }
 
-tenseOutput.on("change", tenseToTable);
+tenseDropdown.on("change", tenseToTable);

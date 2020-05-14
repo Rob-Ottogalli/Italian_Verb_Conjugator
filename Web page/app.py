@@ -8,6 +8,10 @@ app = Flask(__name__)
 # create route that renders index.html template
 @app.route("/")
 def home():
+    return redirect("/main-page")
+
+@app.route("/main-page")
+def main_page():
     # Define variable to hold verb input data
     verb = Italian_Verb_Conjugator.conjugate("piovere", "lui", "present", "indicative")
 
@@ -16,6 +20,7 @@ def home():
 
     # Push conjugated verb to web page
     return render_template("index.html", verb=verb)
+
 
 @app.route("/scrape")
 def scrape():
@@ -32,7 +37,7 @@ def scrape():
     # print(f"Verb printed: {verb}")
 
     # Redirect back to home page
-    return redirect("/")
+    return redirect("/main-page")
 
 if __name__ == "__main__":
     app.run(debug=True)
